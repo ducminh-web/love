@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trả lời anh nhé 💘</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: radial-gradient(circle at top, #1a1a2e, #000);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        .box {
+            text-align: center;
+            padding: 40px 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(255, 0, 100, 0.4);
+            animation: fadeIn 1.2s;
+        }
+
+        h1 {
+            color: #ff6bcb;
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yes {
+            background: #ff4d9d;
+            color: white;
+            margin-right: 20px;
+        }
+
+        #yes:hover {
+            transform: scale(1.1);
+        }
+
+        #no {
+            background: #555;
+            color: white;
+            position: absolute;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-10px);
+            }
+            to {
+                transform: translateY(110vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1>🌙 Em cho anh thơm má nhé?</h1>
+    <p>
+        Anh hứa thơm một cái,<br>
+        và ôm một cái 💖
+    </p>
+
+    <div class="buttons">
+        <button id="yes" onclick="accept()">Đồng ý 💘</button>
+        <button id="no" onmouseover="runAway()">Không 😝</button>
+    </div>
+</div>
+
+<script>
+    function accept() {
+        document.body.innerHTML = `
+            <div style="text-align:center;">
+                <h1 style="color:#ff6bcb; font-size:40px;">💞 Anh biết mà 💞</h1>
+                <p style="font-size:22px;">Kiểu gì em chạ cho 🌸</p>
+            </div>
+        `;
+    }
+
+    function runAway() {
+        const noBtn = document.getElementById("no");
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    // Sao rơi
+    function createStar() {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(star);
+
+        setTimeout(() => {
+            star.remove();
+        }, 5000);
+    }
+
+    setInterval(createStar, 100);
+</script>
+
+</body>
+</html>
